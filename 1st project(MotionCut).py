@@ -56,6 +56,18 @@ class ToDoListApp:
         remove_button = ttk.Button(list_frame, text="Remove Task", command=self.remove_task)
         remove_button.grid(row=3, column=0, pady=5)
 
+    # Completed Tasks List Frame
+        completed_frame = ttk.Frame(self.master, padding="10")
+        completed_frame.grid(row=0, column=1, rowspan=2, sticky=(tk.W, tk.E, tk.N, tk.S))
+
+        ttk.Label(completed_frame, text="Completed Tasks").grid(row=0, column=0, padx=5, pady=5, sticky=tk.W)
+
+        self.completed_listbox = tk.Listbox(completed_frame, selectmode=tk.SINGLE, width=40, height=10)
+        self.completed_listbox.grid(row=1, column=0, padx=5, pady=5)
+
+        display_completed_button = ttk.Button(completed_frame, text="Display Completed Tasks", command=self.display_completed_tasks)
+        display_completed_button.grid(row=2, column=0, pady=5)
+
     def display_tasks(self):
         self.task_listbox.delete(0, tk.END)
         for index, task in enumerate(self.tasks, start=1):
@@ -82,8 +94,14 @@ class ToDoListApp:
         if selected_index:
             task_index = selected_index[0]
             self.tasks[task_index].completed = True
-            self.completed_tasks.append(self.tasks.pop(task_index))
+            completed_task = self.tasks.pop(task_index)
+            self.completed_tasks.append(completed_task)
             self.display_tasks()
+    def display_completed_tasks(self):
+        self.completed_listbox.delete(0, tk.END)
+        for index, task in enumerate(self.completed_tasks, start=1):
+            task_info = f"{index}. {task.description} - Due: {task.due_date} - Priority: {task.priority}"
+            self.completed_listbox.insert(tk.END, task_info)
 
     def update_task(self):
         selected_index = self.task_listbox.curselection()
