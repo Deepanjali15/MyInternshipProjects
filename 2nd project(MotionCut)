@@ -1,0 +1,99 @@
+print("   GAME INSTRUCTIONS:   ")
+print("1.Choose one option from the list of choices given.")
+print("2.Progress will be saved.")
+print('3.You can view your inventory to see the items you got.\n')
+
+player_inventory = []
+player_progress = "Begin"
+
+#function to add items to the inventory
+def add_to_inventory(item):
+    player_inventory.append(item)
+    print(f"You've obtained {item}.")
+
+#function to update the progress
+def update_progress(outcome):
+    global player_progress
+    player_progress = outcome
+
+# Initiation of game:
+print("   GAME STARTS:  ")
+print("Title: Whispers of Wonder")
+print("You find yourself on the edge of a magical forest, its glow inviting you to explore.")
+print(
+    "Legends speak of enchantment, mythical creatures, and hidden treasures. Excited, you step into the unknown, the air alive with mystery.")
+
+# Chapter : 01
+print("\nChapter 1: The Forked Trail")
+print("1.Follow the laughter to the left.")
+print("2.Brave the misty path to the right.")
+choice1 = input("Enter your choice: ")
+
+# Choice for 1st chapter
+if choice1 == '1':
+    print("\nOutcome: Joyful Revelry")
+    print(
+        "Following the laughter, you discover playful sprites. They share their joy, granting you the ability to understand and talk to forest creatures.")
+    add_to_inventory("the power to communicate with magical creatures")
+else:
+    print("\nOutcome: Mystical Mist")
+    print(
+        "Venturing through the mist, a friendly ghost challenges you with a riddle. Solve it, and he'll reveal a hidden path.")
+    add_to_inventory("a magical spell unlocking hidden trails")
+update_progress("Chapter 1 completed")
+
+# Chapter : 02
+print("\nChapter 2: Ancient Whispers")
+print("A wise tree stands before you, willing to help.")
+print("1.Ask about the forest's history.")
+print("2.Inquire about potential dangers.")
+choice2 = input("Enter your choice: ")
+
+# choice for 2nd chapter
+if choice2 == '1':
+    print("\nOutcome: Forgotten Tales")
+    print("The wise tree shares ancient stories, pointing you to an entrance of an underground city.")
+    add_to_inventory("the hidden entrance to an ancient city")
+else:
+    print("\nOutcome: Guardian's Warning")
+    print("The tree warns of a mythical guardian. It gives you a charm for protection.")
+    add_to_inventory("a protective charm")
+update_progress("Chapter 2 completed")
+
+# Chapter : 03
+print("\nChapter 3: Mystical Guardian")
+print("Ahead, a guardian protects a treasure.")
+print("1.Speak to the guardian peacefully.")
+print("2.Challenge the guardian in a friendly magical duel.")
+choice3 = input("Enter your choice: ")
+
+# choices for 3rd chapter
+if choice3 == '1':
+    print("\nOutcome: Peaceful Understanding")
+    print("Using the language of sprites, you communicate peacefully, and the guardian shares a piece of the treasure.")
+    add_to_inventory("a radiant gem enhancing magical abilities")
+
+else:
+    print("\nOutcome: Friendly Duel")
+    print("Engaging in a friendly magical duel, you win, and the guardian offers a healing elixir.")
+    add_to_inventory("a healing elixir")
+update_progress("Chapter 3 completed")
+
+# Last chapter- ending
+print("\nEpilogue: The Hidden Haven")
+print("Armed with new abilities, your choice awaits:")
+print("1.Explore the ancient underground city.")
+print("2.Embark on new adventures in unexplored realms.")
+choice_epilogue = input("Enter your choice: ")
+
+if choice_epilogue == '1':
+    print("\nCongratulations! You've chosen to explore the ancient underground city.")
+
+else:
+    print("\nCongratulations! You've chosen to embark on new adventures in unexplored realms.")
+update_progress("Game completed")
+
+# Display player's inventory and overall progress
+print("\nYour journey ends here. Your achievements:")
+print("Inventory:", player_inventory)
+print("Overall Progress:", player_progress)
